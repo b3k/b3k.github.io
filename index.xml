@@ -100,9 +100,12 @@
 &amp;lt;/document&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;When Varnish receive the response from the backend server, there will be an additional call of two requests:
-* &lt;code&gt;GET /api/rest/attachment/556219&lt;/code&gt;
-* &lt;code&gt;GET /api/rest/attachment/556220&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When Varnish receive the response from the backend server, there will be an additional call of two requests:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GET /api/rest/attachment/556219&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GET /api/rest/attachment/556220&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Varnish synchronously execute the query after each of these elements one by one. After receipt of each response they will be placed in a right place in the code.&lt;/p&gt;
 
@@ -175,7 +178,7 @@
 
 &lt;h4 id=&#34;json-data-format&#34;&gt;JSON data format&lt;/h4&gt;
 
-&lt;p&gt;If the API returns data in JSON format, you must remember to Varnish be able to parse such documents in order to search for ESI tags (which are HTML tags). Varnish parameter &lt;code&gt;feature=+esi_disable_xml_check&lt;/code&gt; must be set in the parameters of the daemon startup.&lt;/p&gt;
+&lt;p&gt;If the API returns data in format different than XML, for example in JSON - Varnish will have problems with parsing ESI tags. To allow Varnish parse such documents in order to search for ESI tags (which are XML nodes) parameter &lt;code&gt;feature=+esi_disable_xml_check&lt;/code&gt; must be set in the parameters of the daemon startup.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;DAEMON_OPTS=&amp;quot;-a :6081 \
              -T localhost:6082 \
@@ -185,7 +188,7 @@
              -p feature=+esi_disable_xml_check&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;błędy-404-503-etc-w-endpointach&#34;&gt;Błędy 404, 503 etc. w endpointach&lt;/h4&gt;
+&lt;h4 id=&#34;handling-errors-in-subresources&#34;&gt;Handling errors in subresources&lt;/h4&gt;
 
 &lt;p&gt;Sometimes it can lead to a situation where Varnish attempts to get resource of ESI tag that has no longer exists - for a single resource that is not a big problem in the case of the collection it can cause that we will have mixed contents of HTML containing the description of the 404 error and JSON content of resource - which results in a syntax error for the whole document.&lt;/p&gt;
 

@@ -147,9 +147,12 @@
 &lt;/document&gt;
 </code></pre>
 
-<p>When Varnish receive the response from the backend server, there will be an additional call of two requests:
-* <code>GET /api/rest/attachment/556219</code>
-* <code>GET /api/rest/attachment/556220</code></p>
+<p>When Varnish receive the response from the backend server, there will be an additional call of two requests:</p>
+
+<ul>
+<li><code>GET /api/rest/attachment/556219</code></li>
+<li><code>GET /api/rest/attachment/556220</code></li>
+</ul>
 
 <p>Varnish synchronously execute the query after each of these elements one by one. After receipt of each response they will be placed in a right place in the code.</p>
 
@@ -222,7 +225,7 @@
 
 <h4 id="json-data-format">JSON data format</h4>
 
-<p>If the API returns data in JSON format, you must remember to Varnish be able to parse such documents in order to search for ESI tags (which are HTML tags). Varnish parameter <code>feature=+esi_disable_xml_check</code> must be set in the parameters of the daemon startup.</p>
+<p>If the API returns data in format different than XML, for example in JSON - Varnish will have problems with parsing ESI tags. To allow Varnish parse such documents in order to search for ESI tags (which are XML nodes) parameter <code>feature=+esi_disable_xml_check</code> must be set in the parameters of the daemon startup.</p>
 
 <pre><code>DAEMON_OPTS=&quot;-a :6081 \
              -T localhost:6082 \
@@ -232,7 +235,7 @@
              -p feature=+esi_disable_xml_check&quot;
 </code></pre>
 
-<h4 id="błędy-404-503-etc-w-endpointach">Błędy 404, 503 etc. w endpointach</h4>
+<h4 id="handling-errors-in-subresources">Handling errors in subresources</h4>
 
 <p>Sometimes it can lead to a situation where Varnish attempts to get resource of ESI tag that has no longer exists - for a single resource that is not a big problem in the case of the collection it can cause that we will have mixed contents of HTML containing the description of the 404 error and JSON content of resource - which results in a syntax error for the whole document.</p>
 
