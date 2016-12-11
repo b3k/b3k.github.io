@@ -1,0 +1,14 @@
+---
+contentdir: "content"
+layoutdir: "layouts"
+publishdir: "docs"
+indexes:
+  category: "categories"
+baseurl: "http://b3k.github.io/"
+title: "Bartosz Pietrzak"
+canonifyurls: true
+theme: hyde
+params:
+  description: "Just another boring dev blog."
+  themeColor: "theme-base-0e"
+...
