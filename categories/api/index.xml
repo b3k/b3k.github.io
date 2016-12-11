@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bartosz Pietrzak</title>
-    <link>http://b3k.github.io/categories/api/index.xml</link>
+    <link>https://b3k.github.io/categories/api/index.xml</link>
     <description>Recent content on Bartosz Pietrzak</description>
     <generator>Hugo -- gohugo.io</generator>
-    <atom:link href="http://b3k.github.io/categories/api/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://b3k.github.io/categories/api/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Efficient cache in the REST API using Varnish ESI</title>
-      <link>http://b3k.github.io/posts/esi-and-api-en/</link>
+      <link>https://b3k.github.io/posts/esi-and-api-en/</link>
       <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://b3k.github.io/posts/esi-and-api-en/</guid>
+      <guid>https://b3k.github.io/posts/esi-and-api-en/</guid>
       <description>
 
 &lt;p&gt;Some time ago, while working on a REST API for our corporate applications, rising to the moment when the API was already stabilized we moved on to the optimization - because we expected the API can be used very intensively. Looking for the optimal strategy for the cache, we established the following criteria:&lt;/p&gt;
