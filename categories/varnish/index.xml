@@ -9,10 +9,10 @@
     
     <item>
       <title>Efficient cache in the REST API using Varnish ESI</title>
-      <link>https://b3k.github.io/posts/esi-and-api-en/</link>
+      <link>https://b3k.github.io/posts/cache-in-rest-api-with-varnish-esi/</link>
       <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://b3k.github.io/posts/esi-and-api-en/</guid>
+      <guid>https://b3k.github.io/posts/cache-in-rest-api-with-varnish-esi/</guid>
       <description>
 
 &lt;p&gt;Some time ago, while working on a REST API for our corporate applications, approaching the moment when the API was already stabilized we moved on to the optimization - because we expected the API can be used very intensively. Looking for the optimal strategy for the cache, we established the following criteria:&lt;/p&gt;
